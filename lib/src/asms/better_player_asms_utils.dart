@@ -12,7 +12,9 @@ class BetterPlayerAsmsUtils {
   static const String _dashExtension = "mpd";
 
   static final HttpClient _httpClient = HttpClient()
-    ..connectionTimeout = const Duration(seconds: 5);
+    ..connectionTimeout = const Duration(seconds: 5)
+    ..badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
 
   ///Check if given url is HLS / DASH-type data source.
   static bool isDataSourceAsms(String url) =>
